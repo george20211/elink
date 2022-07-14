@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>E-lnk.ru</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <div class="light_input_form">
+        {% if bad_key %}
+        <h2>Пароль не верный</h2>
+        {% else %}
+        <h2>Ссылка под защитой пароля!</h2>
+        {% endif %}
+    <form class="form" action="http://127.0.0.1:8000/{{form.linked}}/secure_link" method="POST">{% csrf_token %}
+            {{ form.secure_link }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+</html>
+
+
+
+
+<style>
+  .light_input_form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height:200px;
+    background: #57ff65;
+}
+</style>

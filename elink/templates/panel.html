@@ -1,0 +1,54 @@
+{%  for link in page  %}
+<h4> изначальная ссылка - {{ link.linked }}</h4>
+<h4> короткая ссылка - {{ link.linked_link }}</h4>
+<h4> дата добавления - {{ link.date_add }}</h4>
+<h4> описание - {{ link.description }}</h4>
+<h4> ограничение переходов - {{ link.limited_link }}</h4>
+<h4> пароль - {{ link.secure_link }}</h4>
+<h4> с какой даты активна - {{ link.start_link }}</h4>
+<h4> до какой даты активна - {{ link.date_stop }}</h4>
+<h4> всего кликов по ссылке - {{ link.how_many_link }}</h4>
+<h4> повторные переходы по ссылке - {{ link.again_how_many_link }}</h4>
+<br>
+<br>
+<br>
+{%  endfor  %}
+
+
+{%  if page.has_other_pages  %}
+    <nav>
+      <ul class="pagination">
+        {%  if page.has_previous  %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page.previous_page_number }}">&laquo; Предыдущая</a>
+        </li>
+        {%  else  %}
+        <li class="page-item disabled">
+          <span class="page-link">&laquo; Предыдущая</span>
+        </li>
+        {%  endif  %}
+        {%  for i in page.paginator.page_range  %}
+        {%  if page.number == i  %}
+        <li class="page-item active">
+          <span class="page-link">{{ i }}
+            <span class="sr-only">(текущая)</span>
+          </span>
+        </li>
+        {%  else  %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {%  endif  %}
+        {%  endfor  %}
+        {%  if page.has_next  %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page.next_page_number }}">Следующая &raquo;</a>
+        </li>
+        {%  else  %}
+        <li class="page-item disabled">
+          <span class="page-link">Следующая &raquo;</span>
+        </li>
+        {%  endif  %}
+      </ul>
+    </nav>
+    {%  endif  %}

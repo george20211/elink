@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4> изначальная ссылка - {{ link.linked }}</h4>
+<h4> короткая ссылка - {{ link.linked_link }}</h4>
+<h4> дата добавления - {{ link.date_add }}</h4>
+<h4> описание - {{ link.description }}</h4>
+<h4> ограничение переходов - {{ link.limited_link }}</h4>
+<h4> пароль - {{ link.secure_link }}</h4>
+<h4> с какой даты активна - {{ link.start_link }}</h4>
+<h4> до какой даты активна - {{ link.date_stop }}</h4>
+<h4> всего кликов по ссылке - {{ link.how_many_link }}</h4>
+<h4> повторные переходы по ссылке - {{ link.again_how_many_link }}</h4>
+<br>
+<br>
+<br>
+{% for item in stat %}
+<h1>{{ item }}</h1>
+<h4>{{ item.date_check }}</h4>
+<h4>{{ item.country_check }}</h4>
+{% endfor %}
+
+
+{{device_stat}}
+<br>
+{{time_stat}}
+<table>
+    {% for key, value in time_stat %}
+       <tr>
+            <th> {{ key }} </th>
+            <td> {{ value }} </td>
+       </tr>
+    {% endfor %}
+</table>
